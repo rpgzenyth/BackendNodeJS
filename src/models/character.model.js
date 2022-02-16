@@ -59,10 +59,13 @@ const characterSchema = new Schema({
         type: String,
         required: true
     },
+    player: {
+        type: Schema.Types.ObjectId,
+        ref: 'Player'
+    },
     // stats: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'Stats'
-    // }
     // },
     // spell: {
     //     type: Schema.Types.ObjectId,

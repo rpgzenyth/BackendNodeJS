@@ -5,7 +5,7 @@ const verifyPlayerToken = require('../middlewares/VerifyPlayerToken');
 const validationSchema = require('../middlewares/validators/players.validation');
 
 router.post('/players', validationSchema, player.create);
-router.get('/players', verifyPlayerToken, player.getAll);
+router.get('/players', player.getAll);
 router.delete('/players/:id', player.deleteOne);
 router.get('/players/get-player/:id', verifyPlayerToken, player.getOne);
 router.get('/players/get-email/:email', player.getOneByEmail);

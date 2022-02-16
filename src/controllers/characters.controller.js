@@ -16,7 +16,8 @@ exports.create = (req, res) => {
         ideals: req.body.ideals,
         links: req.body.links,
         defects: req.body.defects,
-        history: req.body.history
+        history: req.body.history,
+        player: req.body.player
     });
 
     character.save()
