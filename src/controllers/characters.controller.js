@@ -72,10 +72,21 @@ exports.updateOne = (req, res) => {
     Character.findByIdAndUpdate(
       req.params.id,
       {
-        title: req.body.title,
-        description: req.body.description,
-        duration: req.body.duration,
-        categories: req.body.categories
+        name: req.body.name,
+        race: req.body.race,
+        class: req.body.class,
+        age: req.body.age,
+        waist: req.body.waist,
+        weight: req.body.weight,
+        eyes: req.body.eyes,
+        skin: req.body.skin,
+        hair: req.body.hair,
+        personality: req.body.personality,
+        ideals: req.body.ideals,
+        links: req.body.links,
+        defects: req.body.defects,
+        history: req.body.history,
+        player: req.body.player
       }
     )
     .then((data) => {
