@@ -7,57 +7,43 @@ const characterSchema = new Schema({
         required: true
     },
     race: {
-        type: String,
-        required: true
+        type: String
     },
     class: {
-        type: String,
-        required: true,
+        type: String
     },
     age: {
-        type: String,
-        required: true,
-        unique: true
+        type: String
     },
     waist: {
-        type: Boolean,
-        required: true,
+        type: String
     },
     weight: {
-        type: String,
-        required: true
+        type: String
     },
     eyes: {
-        type: String,
-        required: true
+        type: String
     },
     skin: {
-        type: String,
-        required: true
+        type: String
     },
     hair: {
-        type: String,
-        required: true
+        type: String
     },
     personality: {
-        type: String,
-        required: true
+        type: String
     },
     ideals: {
-        type: String,
-        required: true
+        type: String
     },
     links: {
-        type: String,
-        required: true
+        type: String
     },
     defects: {
-        type: String,
-        required: true
+        type: String
     },
     history: {
-        type: String,
-        required: true
+        type: String
     },
     player: {
         type: Schema.Types.ObjectId,
