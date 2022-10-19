@@ -9,7 +9,7 @@ exports.create = (req, res) => {
     const gameRoom = new GameRoom({
         name: req.body.name,
         token: token,
-        creator: req.player.id
+        creator: req.user.id
     });
 
     gameRoom

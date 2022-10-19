@@ -18,6 +18,6 @@ const gameRoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Player'
     }]
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('GameRoom', gameRoomSchema);

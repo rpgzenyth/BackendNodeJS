@@ -57,6 +57,6 @@ const characterSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: 'Spells'
     // }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Character', characterSchema);
