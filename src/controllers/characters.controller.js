@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         links: req.body.links,
         defects: req.body.defects,
         history: req.body.history,
-        player: req.body.player
+        player: req.user.id
     });
 
     character.save()
@@ -39,6 +39,20 @@ exports.create = (req, res) => {
 
 exports.getAll = (req, res) => {
     Character.find().then(
+        (data) => {
+          res.status(200).json(data);
+        }
+    ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+        }
+    );
+}
+
+exports.getAllByUser = (req, res) => {
+    Character.find({"player": req.user.id}).then(
         (data) => {
           res.status(200).json(data);
         }
