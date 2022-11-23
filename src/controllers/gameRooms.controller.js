@@ -51,7 +51,7 @@ exports.join = (req, res) => {
     .then((data) => {
         var previousPlayers = data[0].players;
         var creator = data[0].creator;
-        if(previousPlayers && previousPlayers.includes(req.body.user) || creator == req.user.id){
+        if(previousPlayers && previousPlayers.includes(req.user.id) || creator == req.user.id){
             res.send({
                 message: "You are already in this game room !"
             })
