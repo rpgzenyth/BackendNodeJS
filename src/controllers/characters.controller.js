@@ -1,4 +1,5 @@
 const Character = require('../models/character.model');
+const Player = require('../models/player.model');
 const bcrypt = require('bcrypt');
 
 exports.create = (req, res) => {
@@ -22,10 +23,21 @@ exports.create = (req, res) => {
 
     character.save()
     .then((data) => {
-        res.send({
-            character: data,
-            created: true
+        Player.findByIdAndUpdate(req.user.id, {
+          $push: { characters: data._id }
         })
+        .then((player) => {
+          res.send({
+            character: data,
+            player: player,
+            created: true
+          })
+        })
+        .catch((err) => {
+          console.log(err.message);
+          res.send(err);
+        })
+        
     })
     .catch((err) => {
         console.log(err.message);    
@@ -69,6 +81,7 @@ exports.getAllByUser = (req, res) => {
 exports.getOne = (req, res) => {
     var id = req.params.id;
     Character.findById(id)
+    .populate("player")
     .then((data) => {
         res.send(data);
 
