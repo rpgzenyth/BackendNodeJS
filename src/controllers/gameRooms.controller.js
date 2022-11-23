@@ -3,7 +3,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.getAll = (req, res) => {
-    GameRoom.find()
+    GameRoom.find({
+        $or:[
+            {creator: req.user.id},
+            {players:{ $in: req.user.id }}
+        ]
+    })
     .then(
       (GameRoom) => {
         res.status(200).json(GameRoom);
