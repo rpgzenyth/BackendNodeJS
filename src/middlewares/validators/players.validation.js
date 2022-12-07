@@ -9,7 +9,7 @@ const userSchemaValidation = (req, res, next) => {
     });
     const validation = userValidationSchema.validate(req.body);
     if (validation.error) {
-        return res.send({
+        return res.status(500).send({
             error: validation.error
         })
     }
