@@ -18,7 +18,11 @@ const playerSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    characters: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Character'
+    }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('Player', playerSchema);
