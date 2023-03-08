@@ -60,7 +60,7 @@ exports.join = (req, res) => {
             res.send({
                 message: "You are already in this game room !"
             })
-        }else{
+        } else {
             GameRoom.findOneAndUpdate({
                 token: req.body.token
             }, {
@@ -80,4 +80,24 @@ exports.join = (req, res) => {
             message: err.message || "some error occured while adding player in GameRoom"
         })
     })
+}
+
+
+exports.getOne = (req, res) => {
+    GameRoom.find({_id: req.params.id,
+        $or:[
+            {creator: req.user.id},
+            {players:{ $in: req.user.id }}
+        ]
+    }).then(
+        (data) => {
+          res.status(200).json(data);
+        }
+    ).catch(
+        (error) => {
+          res.status(400).json({
+            error: error
+          });
+        }
+    );
 }
