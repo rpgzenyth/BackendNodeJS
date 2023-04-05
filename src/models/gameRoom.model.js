@@ -17,6 +17,10 @@ const gameRoomSchema = new Schema({
     players: [{
         type: Schema.Types.ObjectId,
         ref: 'Player'
+    }],
+    characters: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Character'
     }]
 }, { timestamps: true });
 
