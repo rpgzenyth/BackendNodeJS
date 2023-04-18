@@ -126,7 +126,13 @@ exports.getOne = (req, res) => {
             {players:{ $in: req.user.id }}
         ]
     })
-    .populate("characters")
+    .populate({
+        path: "characters",
+        populate: {
+           path: "player",
+           select: { firstName: 1, lastName: 1 }
+        }
+    })
     .then(
         (data) => {
           res.status(200).json(data);
