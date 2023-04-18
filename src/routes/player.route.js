@@ -8,6 +8,7 @@ router.post('/players', validationSchema, player.create);
 router.get('/players', player.getAll);
 router.delete('/players/:id', player.deleteOne);
 router.get('/players/get-player/:id', verifyPlayerToken, player.getOne);
+router.get('/players/get-player', verifyPlayerToken, player.getOneByToken);
 router.get('/players/get-email/:email', player.getOneByEmail);
 router.put('/players/:id', verifyPlayerToken, player.updateOne);
 router.post('/login', player.login);

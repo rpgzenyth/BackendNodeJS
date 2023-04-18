@@ -67,6 +67,20 @@ exports.getOne = (req, res) => {
     .catch((err) => res.send(err));
 }
 
+exports.getOneByToken = (req, res) => {
+  Player.findById(req.user.id).populate('character')
+  .then((data) => {
+    if (!data) {
+      res.status(404).send({
+        message: `User with id ${req.user.id} not found`,
+        // message:"User with id" + req.params.id +"not found"
+      });
+    }
+    res.send(data);
+  })
+  .catch((err) => res.send(err));
+}
+
 exports.getOneByEmail = (req, res) => {
     Player.findOne({email: req.params.email})
     .then((data) => {
